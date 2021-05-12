@@ -263,7 +263,7 @@ void handle_req_res(unsigned char *full_msg){
 	printf("variable initialisation\n");
 
 	/* Put header to structure */
-    header = (header_t *)malloc(sizeof(header_t));
+    header = (header_t *)malloc(sizeof(*header));
 	printf("HEADER allocation okay\n");
     put_to_header(header,full_msg);
 	printf("put to HEADER okay\n");
@@ -278,7 +278,7 @@ void handle_req_res(unsigned char *full_msg){
 
 	printf("MSG TYPE DONE\n");
     /* Put question to structure */
-    question = (question_t*)malloc(sizeof(question_t));
+    question = (question_t*)malloc(sizeof(*question));
 	printf("question allocation okay\n");
 
     int next_loc = parse_question(question,full_msg);

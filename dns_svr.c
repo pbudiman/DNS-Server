@@ -12,6 +12,7 @@
 #include <string.h>
 #include <unistd.h>
 #include "utils.h"
+#include <assert.h>
 
 unsigned char *client_for_upstream( unsigned char *client_msg, int msg_len, char *port, char *ipv4, int *len);
 unsigned char *combine_header_msg(unsigned char *len_bytes, unsigned char* msg,int msg_len);
@@ -264,6 +265,7 @@ void handle_req_res(unsigned char *full_msg){
 
 	/* Put header to structure */
     header = (header_t *)malloc(sizeof(*header));
+	assert(header!=NULL);
 	printf("HEADER allocation okay\n");
     put_to_header(header,full_msg);
 	printf("put to HEADER okay\n");
@@ -273,12 +275,16 @@ void handle_req_res(unsigned char *full_msg){
 	printf("HEADER PRINTED\n");
     /* Find message type - QR : message is a question/request or response */
     qr = (unsigned char*)malloc(sizeof(*qr));
+	assert(qr!=NULL);
+
 	printf("qr allocation okay\n");
     get_message_type(header->flags,qr);
 
 	printf("MSG TYPE DONE\n");
     /* Put question to structure */
     question = (question_t*)malloc(sizeof(*question));
+	assert(question!=NULL);
+
 	printf("question allocation okay\n");
 
     int next_loc = parse_question(question,full_msg);

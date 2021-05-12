@@ -16,6 +16,7 @@
 #define AAAA 28
 #define REQUEST 0
 #define RESPONSE 1
+#define NOT_IMPL_RCODE 4
 
 void log_req(question_t *question);
 void log_res(question_t *question, answer_t *answer,header_t *header);
@@ -30,3 +31,4 @@ bool is_a_response(unsigned char *qr,header_t *header);
 bool is_a_request(unsigned char *qr);
 int get_domain_name(int start_index, char *domain_name, unsigned char *full_msg);
 void log_message(unsigned char *qr,header_t *header,int next_loc, unsigned char *full_msg, question_t *question);
+void rcode_four_error(unsigned char *flag_bytes);

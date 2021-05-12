@@ -223,3 +223,11 @@ void log_message(unsigned char *qr,header_t *header,int next_loc, unsigned char 
 
 }
 
+void rcode_four_error(unsigned char *flag_bytes){
+    /* 2nd byte of the Two Bytes Flag always ending with 0 
+     * as RCODE will always be 0(no error cond) for query from client 
+     * Not Implemented RCODE : 4 */
+    unsigned char temp=(flag_bytes[1]+NOT_IMPL_RCODE);
+    
+    flag_bytes[1] = temp;
+}

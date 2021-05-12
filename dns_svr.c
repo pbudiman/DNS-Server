@@ -260,18 +260,27 @@ void handle_req_res(unsigned char *full_msg){
 	header_t *header;
     unsigned char *qr;
     question_t *question;
+	printf("variable initialisation\n");
+
 	/* Put header to structure */
     header = (header_t *)malloc(sizeof(header_t));
+	printf("HEADER allocation okay\n");
     put_to_header(header,full_msg);
+	printf("put to HEADER okay\n");
+
     print_header(header);
 
 	printf("HEADER PRINTED\n");
     /* Find message type - QR : message is a question/request or response */
     qr = (unsigned char*)malloc(sizeof(*qr));
+	printf("qr allocation okay\n");
     get_message_type(header->flags,qr);
+
 	printf("MSG TYPE DONE\n");
     /* Put question to structure */
     question = (question_t*)malloc(sizeof(question_t));
+	printf("question allocation okay\n");
+
     int next_loc = parse_question(question,full_msg);
 	printf("QUESTION DONE\n");
 

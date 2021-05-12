@@ -138,7 +138,7 @@ void log_res(question_t *question, answer_t *answer, header_t *header){
     
     strftime(timestamp, sizeof(timestamp), "%FT%T%z", tmp);
 
-    if(header->ans_RR_count!=0){
+    if(header->ans_RR_count!=0 && (answer->type==AAAA)){
         fprintf(log_file, "%s %s is at %s\n",timestamp,question->q_name,answer->ip_add);
     }
 

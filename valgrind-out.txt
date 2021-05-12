@@ -1,0 +1,235 @@
+==2092== Memcheck, a memory error detector
+==2092== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2092== Using Valgrind-3.17.0.GIT-lbmacos-adaae87a41-20201121 and LibVEX; rerun with -h for copyright info
+==2092== Command: ./dns_svr 172.26.129.247 5354
+==2092== Parent PID: 841
+==2092== 
+--2092-- 
+--2092-- Valgrind options:
+--2092--    --leak-check=full
+--2092--    --show-leak-kinds=all
+--2092--    --track-origins=yes
+--2092--    --verbose
+--2092--    --log-file=valgrind-out.txt
+--2092-- Output from sysctl({CTL_KERN,KERN_VERSION}):
+--2092--   Darwin Kernel Version 19.3.0: Thu Jan  9 20:58:23 PST 2020; root:xnu-6153.81.5~1/RELEASE_X86_64
+--2092-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--2092-- Page sizes: currently 4096, max supported 4096
+--2092-- Valgrind library directory: /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind
+--2092-- ./dns_svr (rx at 0x100000000, rw at 0x100003000)
+--2092--    reading syms   from primary file (20 85)
+--2092--    dSYM= ./dns_svr.dSYM/Contents/Resources/DWARF/dns_svr
+--2092--    reading dwarf3 from dsyms file
+--2092-- /usr/lib/dyld (rx at 0x100007000, rw at 0x100098000)
+--2092--    reading syms   from primary file (5 2716)
+--2092-- Scheduler: using generic scheduler lock implementation.
+--2092-- Reading suppressions file: /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/default.supp
+==2092== embedded gdbserver: reading from /var/folders/l8/w5rvdr_n55z2xccyfsrrss780000gn/T//vgdb-pipe-from-vgdb-to-2092-by-patriciaangelica-on-???
+==2092== embedded gdbserver: writing to   /var/folders/l8/w5rvdr_n55z2xccyfsrrss780000gn/T//vgdb-pipe-to-vgdb-from-2092-by-patriciaangelica-on-???
+==2092== embedded gdbserver: shared mem   /var/folders/l8/w5rvdr_n55z2xccyfsrrss780000gn/T//vgdb-pipe-shared-mem-vgdb-2092-by-patriciaangelica-on-???
+==2092== 
+==2092== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==2092== don't want to do, unless you know exactly what you're doing,
+==2092== or are doing some strange experiment):
+==2092==   /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/../../bin/vgdb --pid=2092 ...command...
+==2092== 
+==2092== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==2092==   /path/to/gdb ./dns_svr
+==2092== and then give GDB the following command
+==2092==   target remote | /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/../../bin/vgdb --pid=2092
+==2092== --pid is optional if only one valgrind process is running
+==2092== 
+--2092-- REDIR: 0x100058520 (dyld:strcmp) redirected to 0x2580589ed (???)
+--2092-- REDIR: 0x100052810 (dyld:arc4random) redirected to 0x258058a8b (???)
+--2092-- REDIR: 0x100057900 (dyld:strlen) redirected to 0x2580589bc (???)
+--2092-- REDIR: 0x100058820 (dyld:strcpy) redirected to 0x258058a09 (???)
+--2092-- REDIR: 0x1000559a4 (dyld:strcat) redirected to 0x2580589cd (???)
+--2092-- REDIR: 0x1000576fe (dyld:strlcat) redirected to 0x258058a26 (???)
+--2092-- /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x10010b000, rw at 0x10010f000)
+--2092--    reading syms   from primary file (3 48)
+--2092--    dSYM= /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--2092-- /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x100111000, rw at 0x100118000)
+--2092--    reading syms   from primary file (75 57)
+--2092--    dSYM= /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+--2092-- /usr/lib/libSystem.B.dylib (rx at 0x10011d000, rw at 0x10011f000)
+--2092--    reading syms   from primary file (29 8)
+--2092-- /usr/lib/system/libcache.dylib (rx at 0x100127000, rw at 0x10012d000)
+--2092--    reading syms   from primary file (32 29)
+--2092-- /usr/lib/system/libcommonCrypto.dylib (rx at 0x100134000, rw at 0x100140000)
+--2092--    reading syms   from primary file (242 172)
+--2092-- /usr/lib/system/libcompiler_rt.dylib (rx at 0x100150000, rw at 0x100158000)
+--2092--    reading syms   from primary file (505 8)
+--2092-- /usr/lib/system/libcopyfile.dylib (rx at 0x100167000, rw at 0x100171000)
+--2092--    reading syms   from primary file (11 39)
+--2092-- /usr/lib/system/libcorecrypto.dylib (rx at 0x100179000, rw at 0x100211000)
+--2092--    reading syms   from primary file (575 861)
+--2092-- /usr/lib/system/libdispatch.dylib (rx at 0x100231000, rw at 0x100273000)
+--2092--    reading syms   from primary file (328 1419)
+--2092-- /usr/lib/system/libdyld.dylib (rx at 0x1002ad000, rw at 0x1002e3000)
+--2092--    reading syms   from primary file (119 1463)
+--2092-- /usr/lib/system/libkeymgr.dylib (rx at 0x10030c000, rw at 0x10030d000)
+--2092--    reading syms   from primary file (11 2)
+--2092-- /usr/lib/system/libmacho.dylib (rx at 0x10031c000, rw at 0x100322000)
+--2092--    reading syms   from primary file (105 2)
+--2092-- /usr/lib/system/libquarantine.dylib (rx at 0x10032a000, rw at 0x10032d000)
+--2092--    reading syms   from primary file (88 12)
+--2092-- /usr/lib/system/libremovefile.dylib (rx at 0x100335000, rw at 0x100337000)
+--2092--    reading syms   from primary file (12 8)
+--2092-- /usr/lib/system/libsystem_asl.dylib (rx at 0x10033e000, rw at 0x100356000)
+--2092--    reading syms   from primary file (219 234)
+--2092-- /usr/lib/system/libsystem_blocks.dylib (rx at 0x100365000, rw at 0x100366000)
+--2092--    reading syms   from primary file (21 8)
+--2092-- /usr/lib/system/libsystem_c.dylib (rx at 0x10036d000, rw at 0x1003f5000)
+--2092--    reading syms   from primary file (1346 892)
+--2092-- /usr/lib/system/libsystem_configuration.dylib (rx at 0x10041f000, rw at 0x100423000)
+--2092--    reading syms   from primary file (36 68)
+--2092-- /usr/lib/system/libsystem_coreservices.dylib (rx at 0x10042c000, rw at 0x100430000)
+--2092--    reading syms   from primary file (14 47)
+--2092-- /usr/lib/system/libsystem_darwin.dylib (rx at 0x100438000, rw at 0x100441000)
+--2092--    reading syms   from primary file (63 562)
+--2092-- /usr/lib/system/libsystem_dnssd.dylib (rx at 0x10044f000, rw at 0x100457000)
+--2092--    reading syms   from primary file (39 25)
+--2092-- /usr/lib/system/libsystem_featureflags.dylib (rx at 0x10045f000, rw at 0x100461000)
+--2092--    reading syms   from primary file (1 12)
+--2092-- /usr/lib/system/libsystem_info.dylib (rx at 0x100468000, rw at 0x1004b6000)
+--2092--    reading syms   from primary file (427 718)
+--2092-- /usr/lib/system/libsystem_m.dylib (rx at 0x1004ce000, rw at 0x100516000)
+--2092--    reading syms   from primary file (811 1)
+--2092-- /usr/lib/system/libsystem_malloc.dylib (rx at 0x100527000, rw at 0x10054f000)
+--2092--    reading syms   from primary file (98 475)
+--2092-- /usr/lib/system/libsystem_networkextension.dylib (rx at 0x10055f000, rw at 0x10056d000)
+--2092--    reading syms   from primary file (118 242)
+--2092-- /usr/lib/system/libsystem_notify.dylib (rx at 0x10057c000, rw at 0x100586000)
+--2092--    reading syms   from primary file (23 1)
+--2092-- /usr/lib/system/libsystem_sandbox.dylib (rx at 0x10058e000, rw at 0x100593000)
+--2092--    reading syms   from primary file (112 23)
+--2092-- /usr/lib/system/libsystem_secinit.dylib (rx at 0x10059c000, rw at 0x10059f000)
+--2092--    reading syms   from primary file (5 20)
+--2092-- /usr/lib/system/libsystem_kernel.dylib (rx at 0x1005a6000, rw at 0x1005d3000)
+--2092--    reading syms   from primary file (1356 227)
+--2092-- /usr/lib/system/libsystem_platform.dylib (rx at 0x1005f1000, rw at 0x1005fb000)
+--2092--    reading syms   from primary file (168 103)
+--2092-- /usr/lib/system/libsystem_pthread.dylib (rx at 0x100605000, rw at 0x100610000)
+--2092--    reading syms   from primary file (189 143)
+--2092-- /usr/lib/system/libsystem_symptoms.dylib (rx at 0x10061d000, rw at 0x100625000)
+--2092--    reading syms   from primary file (10 86)
+--2092-- /usr/lib/system/libsystem_trace.dylib (rx at 0x10062d000, rw at 0x100644000)
+--2092--    reading syms   from primary file (131 257)
+--2092-- /usr/lib/system/libunwind.dylib (rx at 0x100656000, rw at 0x10065c000)
+--2092--    reading syms   from primary file (102 52)
+--2092-- /usr/lib/system/libxpc.dylib (rx at 0x100665000, rw at 0x10069b000)
+--2092--    reading syms   from primary file (620 1288)
+--2092-- /usr/lib/libobjc.A.dylib (rx at 0x1006c6000, rw at 0x1006f8000)
+--2092--    reading syms   from primary file (382 727)
+--2092-- /usr/lib/libc++abi.dylib (rx at 0x10071b000, rw at 0x100730000)
+--2092--    reading syms   from primary file (369 640)
+--2092-- /usr/lib/libc++.1.dylib (rx at 0x10074c000, rw at 0x1007a0000)
+--2092--    reading syms   from primary file (2086 1198)
+--2092-- REDIR: 0x1005f31e0 (libsystem_platform.dylib:_platform_memcmp) redirected to 0x1001148fb (_platform_memcmp)
+--2092-- REDIR: 0x1005f2a40 (libsystem_platform.dylib:_platform_strncmp) redirected to 0x100114295 (_platform_strncmp)
+--2092-- REDIR: 0x1005f2640 (libsystem_platform.dylib:_platform_strcmp) redirected to 0x10011430f (_platform_strcmp)
+--2092-- REDIR: 0x100527fd0 (libsystem_malloc.dylib:malloc) redirected to 0x1001125c0 (malloc)
+--2092-- REDIR: 0x10052a294 (libsystem_malloc.dylib:calloc) redirected to 0x100112bd6 (calloc)
+--2092-- REDIR: 0x10052a13d (libsystem_malloc.dylib:realloc) redirected to 0x100112f54 (realloc)
+--2092-- REDIR: 0x10052a45d (libsystem_malloc.dylib:malloc_default_zone) redirected to 0x100113909 (malloc_default_zone)
+--2092-- REDIR: 0x100528002 (libsystem_malloc.dylib:malloc_zone_malloc) redirected to 0x100112828 (malloc_zone_malloc)
+--2092-- REDIR: 0x10052a2c9 (libsystem_malloc.dylib:malloc_zone_calloc) redirected to 0x100112dc2 (malloc_zone_calloc)
+--2092-- REDIR: 0x10052a465 (libsystem_malloc.dylib:malloc_zone_from_ptr) redirected to 0x10011394a (malloc_zone_from_ptr)
+--2092-- REDIR: 0x100528ba1 (libsystem_malloc.dylib:free) redirected to 0x10011299c (free)
+--2092-- REDIR: 0x1005f3140 (libsystem_platform.dylib:_platform_strchr$VARIANT$Haswell) redirected to 0x100113bbd (_platform_strchr$VARIANT$Haswell)
+--2092-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option
+--2092-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 2 times)
+--2092-- UNKNOWN mach_msg unhandled MACH_SEND_TRAILER option (repeated 4 times)
+--2092-- REDIR: 0x1005f2fe0 (libsystem_platform.dylib:_platform_memchr$VARIANT$Haswell) redirected to 0x100114390 (_platform_memchr$VARIANT$Haswell)
+==2092== Invalid read of size 16
+==2092==    at 0x1005F2C92: _platform_strlen (in /usr/lib/system/libsystem_platform.dylib)
+==2092==    by 0x1003B077A: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x1003D5E1A: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x1003AE48D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x1003A72AB: fprintf (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x100001ED4: log_req (utils.c:17)
+==2092==    by 0x100002937: log_message (utils.c:220)
+==2092==    by 0x1000018FC: handle_req_res (dns_svr.c:275)
+==2092==    by 0x100001767: main (dns_svr.c:103)
+==2092==  Address 0x100806bb0 is 0 bytes inside a block of size 1 free'd
+==2092==    at 0x100112FD6: realloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x100002315: get_domain_name (utils.c:183)
+==2092==    by 0x1000021B4: parse_question (utils.c:75)
+==2092==    by 0x1000018D0: handle_req_res (dns_svr.c:271)
+==2092==    by 0x100001767: main (dns_svr.c:103)
+==2092==  Block was alloc'd at
+==2092==    at 0x100112635: malloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x1000021A0: parse_question (utils.c:74)
+==2092==    by 0x1000018D0: handle_req_res (dns_svr.c:271)
+==2092==    by 0x100001767: main (dns_svr.c:103)
+==2092== 
+==2092== Invalid read of size 1
+==2092==    at 0x1005F2802: _platform_memmove$VARIANT$Haswell (in /usr/lib/system/libsystem_platform.dylib)
+==2092==    by 0x1003A8831: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x1003B2026: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x1003D5E1A: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x1003AE48D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x1003A72AB: fprintf (in /usr/lib/system/libsystem_c.dylib)
+==2092==    by 0x100001ED4: log_req (utils.c:17)
+==2092==    by 0x100002937: log_message (utils.c:220)
+==2092==    by 0x1000018FC: handle_req_res (dns_svr.c:275)
+==2092==    by 0x100001767: main (dns_svr.c:103)
+==2092==  Address 0x100806bb0 is 0 bytes inside a block of size 1 free'd
+==2092==    at 0x100112FD6: realloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x100002315: get_domain_name (utils.c:183)
+==2092==    by 0x1000021B4: parse_question (utils.c:75)
+==2092==    by 0x1000018D0: handle_req_res (dns_svr.c:271)
+==2092==    by 0x100001767: main (dns_svr.c:103)
+==2092==  Block was alloc'd at
+==2092==    at 0x100112635: malloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x1000021A0: parse_question (utils.c:74)
+==2092==    by 0x1000018D0: handle_req_res (dns_svr.c:271)
+==2092==    by 0x100001767: main (dns_svr.c:103)
+==2092== 
+==2092== Invalid write of size 1
+==2092==    at 0x1000019AC: combine_header_msg (dns_svr.c:243)
+==2092==    by 0x100001777: main (dns_svr.c:106)
+==2092==  Address 0x100825de8 is 0 bytes after a block of size 40 alloc'd
+==2092==    at 0x100112635: malloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x100001962: combine_header_msg (dns_svr.c:239)
+==2092==    by 0x100001777: main (dns_svr.c:106)
+==2092== 
+==2092== Syscall param socketcall.sendto(msg) points to unaddressable byte(s)
+==2092==    at 0x1005AA7F6: sendto (in /usr/lib/system/libsystem_kernel.dylib)
+==2092==    by 0x100001C02: client_for_upstream (dns_svr.c:192)
+==2092==    by 0x10000179B: main (dns_svr.c:109)
+==2092==  Address 0x100825de8 is 0 bytes after a block of size 40 alloc'd
+==2092==    at 0x100112635: malloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x100001962: combine_header_msg (dns_svr.c:239)
+==2092==    by 0x100001777: main (dns_svr.c:106)
+==2092== 
+==2092== Invalid write of size 1
+==2092==    at 0x1000019AC: combine_header_msg (dns_svr.c:243)
+==2092==    by 0x100001D29: client_for_upstream (dns_svr.c:226)
+==2092==    by 0x10000179B: main (dns_svr.c:109)
+==2092==  Address 0x100826234 is 0 bytes after a block of size 68 alloc'd
+==2092==    at 0x100112635: malloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x100001962: combine_header_msg (dns_svr.c:239)
+==2092==    by 0x100001D29: client_for_upstream (dns_svr.c:226)
+==2092==    by 0x10000179B: main (dns_svr.c:109)
+==2092== 
+==2092== Invalid read of size 1
+==2092==    at 0x100001DC3: get_res_msg (dns_svr.c:289)
+==2092==    by 0x1000017AE: main (dns_svr.c:112)
+==2092==  Address 0x100826234 is 0 bytes after a block of size 68 alloc'd
+==2092==    at 0x100112635: malloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x100001962: combine_header_msg (dns_svr.c:239)
+==2092==    by 0x100001D29: client_for_upstream (dns_svr.c:226)
+==2092==    by 0x10000179B: main (dns_svr.c:109)
+==2092== 
+--2092-- REDIR: 0x1003c439e (libsystem_c.dylib:strrchr) redirected to 0x100113b5b (strrchr)
+--2092-- REDIR: 0x1003ea5b1 (libsystem_c.dylib:__strcpy_chk) redirected to 0x100113e6d (__strcpy_chk)
+==2092== Syscall param socketcall.sendto(msg) points to unaddressable byte(s)
+==2092==    at 0x1005AA7F6: sendto (in /usr/lib/system/libsystem_kernel.dylib)
+==2092==    by 0x1000017CD: main (dns_svr.c:117)
+==2092==  Address 0x100826234 is 0 bytes after a block of size 68 alloc'd
+==2092==    at 0x100112635: malloc (in /usr/local/Cellar/valgrind/HEAD-adaae87/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2092==    by 0x100001962: combine_header_msg (dns_svr.c:239)
+==2092==    by 0x100001D29: client_for_upstream (dns_svr.c:226)
+==2092==    by 0x10000179B: main (dns_svr.c:109)
+==2092== 

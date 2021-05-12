@@ -1,0 +1,57 @@
+echo AAAA record
+dig +tcp -p 8053 @127.0.0.1 AAAA 1.comp30023
+
+echo double AAAA record
+dig +tcp -p 8053 @127.0.0.1 AAAA 2.comp30023
+
+echo multiple AAAA queries
+dig +tcp -p 8053 @127.0.0.1 AAAA 1.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA 1-alt.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA 1-alt.comp30023
+
+echo AAAA ::1 (loopback)
+dig +tcp -p 8053 @127.0.0.1 AAAA loopback.comp30023
+
+echo domain with no AAAA records
+dig +tcp -p 8053 @127.0.0.1 AAAA none.comp30023
+
+echo CNAME AAAA
+dig +tcp -p 8053 @127.0.0.1 AAAA cname.comp30023
+
+echo 63 char label
+dig +tcp -p 8053 @127.0.0.1 AAAA abcde-----fghij-----12345-----12345-----12345-----12345-----123.comp30023
+
+echo multiple AAAA queries
+dig +tcp -p 8053 @127.0.0.1 AAAA 1.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA 1-alt.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA 1-alt.comp30023
+
+echo PTR record MX unimelb.edu.au (0b1100 | rcode 4)
+dig +tcp -p 8053 @127.0.0.1 PTR 122.69.13.103.in-addr.arpa
+
+echo "Caching"
+echo TTL is decrementing? (No log)
+dig +tcp -p 8053 @127.0.0.1 AAAA 1.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA 1.comp30023
+
+echo 3s TTL (check for expiry)
+dig +tcp -p 8053 @127.0.0.1 AAAA short.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA short.comp30023
+
+echo cache eviction 1
+dig +tcp -p 8053 @127.0.0.1 AAAA c0.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA c1.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA c2.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA c3.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA c4.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA c0.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA c5.comp30023
+
+echo "Non-blocking"
+echo Delay 1 (sleep) & send 1
+dig +tcp -p 8053 @127.0.0.1 AAAA b0.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA b1.comp30023
+
+echo Delay 1 (sleep) & send 2
+dig +tcp -p 8053 @127.0.0.1 AAAA b0.comp30023
+dig +tcp -p 8053 @127.0.0.1 AAAA b1.comp30023

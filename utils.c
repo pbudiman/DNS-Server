@@ -93,6 +93,7 @@ void parse_answer(answer_t *answer,int ans_start_index,unsigned char *full_msg){
     answer->name[0]=full_msg[loc];
     answer->name[1]=full_msg[loc+1];
     answer->type=full_msg[loc+2]+full_msg[loc+3];
+    printf("ANSWER TYPE IS %d\n",answer->type);
     answer->q_class[0]=full_msg[loc+4];
     answer->q_class[1]=full_msg[loc+5];
     answer->ttl = full_msg[loc+6]+full_msg[loc+7]+full_msg[loc+8]+full_msg[loc+9];

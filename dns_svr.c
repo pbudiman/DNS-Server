@@ -127,10 +127,10 @@ int main(int argc, char** argv) {
 
 		printf("Here is len: %d\n", num_bytes);
 
-		free(query_msg);
-		free(original_msg);
-		free(upstream_res);
-		free(upstream_res_msg);
+		// free(query_msg);
+		// free(original_msg);
+		// free(upstream_res);
+		// free(upstream_res_msg);
 		printf("----------------------------------------------------\n");
 	}
 

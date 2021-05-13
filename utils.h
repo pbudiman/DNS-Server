@@ -17,6 +17,8 @@
 #define REQUEST 0
 #define RESPONSE 1
 #define NOT_IMPL_RCODE 4
+#define HEX_EIGHTY 128
+
 
 void log_req(question_t *question);
 void log_res(question_t *question, answer_t *answer,header_t *header);

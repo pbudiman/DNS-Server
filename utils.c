@@ -212,7 +212,7 @@ int get_domain_name(int start_index, char *domain_name, unsigned char *full_msg)
 }
 
 void log_message(unsigned char *qr,header_t *header,int next_loc, unsigned char *full_msg, question_t *question){
-    /* Check whether message is a question/request or response & log */
+    /* Check whether message is a question/request or response  log */
     if(is_a_response(qr,header)){
         /* Parse and store answer */
         answer_t *answer = (answer_t*)malloc(sizeof(answer_t));
@@ -229,8 +229,12 @@ void rcode_four_error(unsigned char *query_msg){
      * as RCODE will always be 0(no error cond) for query from client 
      * Not Implemented RCODE : 4 */
     printf("query msg 3 is %02x\n",query_msg[3]);
-    unsigned char temp=(query_msg[3]+NOT_IMPL_RCODE);
+    unsigned char temp1=(query_msg[3]+NOT_IMPL_RCODE);
+    // unsigned char yo=80;
+    unsigned char temp2=(query_msg[2]+HEX_EIGHTY);
+    query_msg[2] = temp2;
+    printf("query msg 2 before %02x after %02x\n",query_msg[2],temp2);
     
-    query_msg[3] = temp;
+    query_msg[3] = temp1;
     printf("NON VALID QUERY CHANGED RCODE TO 4 - %02x\n",query_msg[3]);
 }

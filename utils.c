@@ -228,12 +228,13 @@ void rcode_four_error(unsigned char *query_msg){
     /* 2nd byte of the Two Bytes Flag always ending with 0 
      * as RCODE will always be 0(no error cond) for query from client 
      * Not Implemented RCODE : 4 */
+    printf("original flags %02x %02x\n",query_msg[2],query_msg[3]);
     printf("query msg 3 is %02x\n",query_msg[3]);
     unsigned char temp1=(query_msg[3]+NOT_IMPL_RCODE);
     // unsigned char yo=80;
-    unsigned char temp2=(query_msg[2]+HEX_EIGHTY);
-    query_msg[2] = temp2;
-    printf("query msg 2 before %02x after %02x\n",query_msg[2],temp2);
+    // unsigned char temp2=(query_msg[2]+HEX_EIGHTY);
+    query_msg[2] = HEX_EIGHTYFOUR;
+    printf("query msg 2 after %02x\n",query_msg[2]);
     
     query_msg[3] = temp1;
     printf("NON VALID QUERY CHANGED RCODE TO 4 - %02x\n",query_msg[3]);

@@ -18,6 +18,8 @@
 #define RESPONSE 1
 #define NOT_IMPL_RCODE 4
 #define HEX_EIGHTY 128
+#define HEX_EIGHTYFOUR 132
+
 
 
 void log_req(question_t *question);

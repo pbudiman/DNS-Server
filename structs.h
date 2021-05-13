@@ -21,7 +21,7 @@ typedef struct {
 
 typedef struct {
     char *q_name;
-    unsigned char q_type;
+    int q_type;
     unsigned char q_class[2];
 } question_t;
 

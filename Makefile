@@ -4,10 +4,10 @@
 # COPT - compiler flags
 # BIN - binary
 CC=gcc
-OBJ=utils.o 
+OBJ = parsing_utils.o logging.o client.o error_handling.o caching.o ttl_conversion.o
 COPT=-Wall -Wpedantic -g
-BIN_PHASE1=phase1
-BIN_PHASE2=dns_svr
+BIN_PHASE1= phase1
+BIN_PHASE2= dns_svr
 
 # Running "make" with no argument will make the first target in the file
 all: $(BIN_PHASE1) $(BIN_PHASE2)
@@ -33,3 +33,6 @@ format:
 
 clean:
 	$(RM) dns_svr dns_svr.log phase1 $(OBJ)
+
+normal:
+	make clean && make && clear && ./dns_svr 172.26.129.247 5353

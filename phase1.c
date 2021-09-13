@@ -1,7 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* 
+ * phase1.c 
+ * Functions to test parsing
+ * 
+ * Patricia Angelica Budiman (1012861)
+ */
 
-#include "utils.h"
+#include "parsing_utils.h"
+#include "logging.h"
 
 int main(int argc, char* argv[]) {
     unsigned char *msg_len_bytes;
@@ -38,7 +43,7 @@ int main(int argc, char* argv[]) {
         /* Parse and store answer */
         answer_t *answer = (answer_t*)malloc(sizeof(answer_t));
         parse_answer(answer,next_loc,full_msg);
-        log_res(question,answer,header);
+        log_res(question,answer,header,NULL);
     }else if( is_a_request(qr)){
         log_req(question);
     }
